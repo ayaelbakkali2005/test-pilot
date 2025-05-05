@@ -1,0 +1,118 @@
+.content {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background-color: #fbcdfb;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+   
+  }
+  .gradient-text {
+    background: linear-gradient(145deg, #fca1f8, #81147d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #1b0033, #3a0066);
+    color: rgb(65, 7, 80);
+  }
+  
+  header {
+    background-color: transparent;
+    padding: 20px;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  nav h1 {
+    color: #ff4dd2;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  main.content {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  main h2 {
+    font-size: 2.5em;
+    color: #ff4dd2;
+  }
+  
+  main p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  footer {
+    background-color: transparent;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #ccc;
+  }
+  
+  .button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #ff4dd2;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #e600a8;
+  }
+  
+  
+  c
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+  }
+  
+  .nav-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-links li a:hover {
+    color: rgba(218, 74, 189, 0.959);
+  }
+  
+  
+  @keyframes float {
+    0% ,100% { transform:translateY(0);}
+    50% { transform:translateY(-20px);}
+}
+

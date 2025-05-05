@@ -74,7 +74,7 @@ body {
        margin: 40px 20px;
        color: rgba(218, 74, 189, 0.959);
         margin-bottom: 6rem;
-        background: linear-gradient(45deg, var(--accent) 30%,#ffffff 70% );
+        background: linear-gradient(45deg, #9e0999 30%,#ffffff 70% );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         }
