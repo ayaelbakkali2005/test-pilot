@@ -2,7 +2,7 @@
     max-width: 800px;
     margin: 4rem auto;
     padding: 2rem;
-    background-color: #fbcdfb;
+    background-color: #fbcdfb;;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     
@@ -114,5 +114,21 @@ body {
   @keyframes float {
     0% ,100% { transform:translateY(0);}
     50% { transform:translateY(-20px);}
+
 }
 
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px #e87ee1, 0 0 20px #dc15c8, 0 0 30px #5a0352;
+  }
+  50% {
+    box-shadow: 0 0 20px #dc15c8, 0 0 40px #e87ee1, 0 0 60px #5a0352;
+  }
+  100% {
+    box-shadow: 0 0 10px #e87ee1, 0 0 20px #dc15c8, 0 0 30px #5a0352;
+  }
+}
+
+.glow {
+  animation: glowPulse 3s ease-in-out infinite;
+}
