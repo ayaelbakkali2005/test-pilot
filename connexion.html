@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ط<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -7,17 +7,18 @@
   <title>Connexion sur Test-Pilot</title>
 </head>
 <body>
-    <nav class="navbar">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#DA70D6" width="50" height="50">
-            <path d="M9.97 13.39l-.39 4.47c.56 0 .8-.24 1.09-.52l2.62-2.37 5.44 3.96c1 .55 1.73.26 1.98-.92l3.6-16.87c.32-1.5-.56-2.08-1.5-1.72L1.43 9.83C-.02 10.4-.01 11.2 1.14 11.56l5.65 1.76 13.12-8.26c.62-.38 1.2-.17.73.22l-10.67 8.11z"/>
-          </svg>
-        <a href="index.html" class="logo">TestPilot</a>
-        <ul class="nav-links">
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="a-propos.html">A Propos</a> </li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav><br><br>
+  <nav class="navbar">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#DA70D6" width="50" height="50">
+      <path d="M9.97 13.39l-.39 4.47c.56 0 .8-.24 1.09-.52l2.62-2.37 5.44 3.96c1 .55 1.73.26 1.98-.92l3.6-16.87c.32-1.5-.56-2.08-1.5-1.72L1.43 9.83C-.02 10.4-.01 11.2 1.14 11.56l5.65 1.76 13.12-8.26c.62-.38 1.2-.17.73.22l-10.67 8.11z"/>
+    </svg>
+    <a href="index.html" class="logo">TestPilot</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">A Propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav><br><br>
+
   <div class="wrapper">
     <div class="form-container connexion glow fade-in">
       <form action="#">
@@ -25,23 +26,31 @@
         <div class="form-group">
           <input type="text" required />
           <i class="fas fa-user"></i>
-          <label for="">Nom d'utilisateur</label>
+          <label>Nom d'utilisateur</label>
         </div>
         <div class="form-group">
           <input type="password" required />
           <i class="fas fa-lock"></i>
-          <label for="">Mot de Passe</label>
+          <label>Mot de Passe</label>
         </div>
         <div class="forgot-pass">
-          <a href="#">Mot de passe oubliée?</a>
+          <a href="mmdp.html">Mot de passe oubliée ?</a>
         </div>
-        <button type="submit" class="btn glow">Se connecter</button>
+        <button type="submit" class="btn glow" onclick="playClick()">Se connecter</button>
         <div class="link">
-          <p>Vous n'avez pas de compte?<a href="#" class="signup-link"> S'inscrire</a></p>
+          <p>Vous n'avez pas de compte ?<a href="inscription.html" class="signup-link"> S'inscrire</a></p>
         </div>
       </form>
     </div>
   </div>
+
+  <audio id="click-sound" src="click.mp3" preload="auto"></audio>
+
   <script src="https://kit.fontawesome.com/9e5ba2e3f5.js" crossorigin="anonymous"></script>
+  <script>
+    function playClick() {
+      document.getElementById('click-sound').play();
+    }
+  </script>
 </body>
 </html>
