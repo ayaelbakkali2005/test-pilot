@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vérification par Code</title>
+  <link rel="stylesheet" href="verificationemail.css" />
+</head>
+<body>
+  <div class="background">
+    <div class="verification-box">
+      <h2>Vérification par Code</h2>
+      <p>Entrez le code reçu par email</p>
+      <div class="code-inputs">
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+        <input type="text" maxlength="1" />
+      </div>
+      <button>Vérifier </button>
+      <p class="timer"></p> 
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const inputs = document.querySelectorAll(".code-inputs input");
+      const verifyButton = document.querySelector(".verification-box button");
+      const timerElement = document.querySelector(".timer");
+
+      let timeLeft = 60;
+
+      
+      timerElement.textContent = 'Temps restant : ${timeLeft}s';
+
+      let timer = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = 'Temps restant : ${timeLeft}s';
+
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          timerElement.textContent = "Le code a expiré.";
+          verifyButton.disabled = true;
+        }
+      }, 1000);
+
+      inputs.forEach((input, index) => {
+        input.addEventListener("input", (e) => {
+          const value = e.target.value;
+          if (!/^\d$/.test(value)) {
+            input.value = "";
+            return;
+          }
+
+          if (value !== "" && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
+        });
+
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace") {
+            if (input.value === "" && index > 0) {
+              inputs[index - 1].focus();
+            }
+          }
+        });
+      });
+
+      verifyButton.addEventListener("click", () => {
+        const code = Array.from(inputs).map((input) => input.value).join("");
+        if (code.length === 5) {
+          alert("Code vérifié : " + code);
+        } else {
+          alert("Veuillez entrer le code complet.");
+        }
+      });
+
+      verifyButton.addEventListener("click", () => {
+  const code = Array.from(inputs).map((input) => input.value).join("");
+  
+  if (code.length === 5) {
+    
+    window.location.href = "reset-password.html";
+  } else {
+    alert("Veuillez entrer le code complet.");
+  }
+});
+    });
+  </script>
+</body>
+</html>

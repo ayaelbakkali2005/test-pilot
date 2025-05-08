@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Réinitialisation Mot de passe</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #2d0036, #21074d);
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .box {
+      background-color: #21105180;
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255, 0, 128, 0.4);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .box h2 {
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: #ff78c4;
+    }
+
+    .box label {
+      display: block;
+      text-align: left;
+      font-size: 0.85rem;
+      margin-bottom: 5px;
+      margin-left: 5px;
+      color: #e0b3ff;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 40px 12px 12px;
+      background-color: transparent;
+      border: 2px solid #ff78c4;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus {
+      box-shadow: 0 0 12px #ff78c4;
+    }
+
+    .input-group .icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffb3e6;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #ff78c4, #b983ff);
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .link {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #d6aaff;
+    }
+
+    .link a {
+      color: #ffb3ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+
+    .success-message {
+      background-color: #bfffcc;
+      color: rgb(20, 22, 93);
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: none;
+      box-shadow: 0 0 10px #bfffcc;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="success-message" id="successMessage">Email envoyé avec succès !</div>
+    <h2>Réinitialisation Mot de passe</h2>
+    <form id="resetForm">
+      <label for="email">Email</label>
+      <div class="input-group">
+        <input type="email" id="email" placeholder="Entrez votre email" required />
+        <span class="icon">✉</span>
+      </div>
+      <button class="btn" type="submit">Continuer</button>
+    </form>
+    <div class="link">
+      Retour à la page <a href="connexion.html">connexion</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("resetForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const message = document.getElementById("successMessage");
+      message.style.display = "block";
+
+      setTimeout(() => {
+        window.location.href = "verificationemail.html";
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
