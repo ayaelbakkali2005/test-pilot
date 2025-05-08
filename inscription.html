@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscription | TestPilot</title>
+  <link rel="stylesheet" href="inscription.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <section class="form-section">
+    <div class="form-container">
+      <h2>Créer un compte</h2>
+      <form id="registerForm">
+        <input type="email" name="email" placeholder="Email Instituelle" required />
+        <input type="text" name="nom" placeholder="Nom" required />
+        <input type="text" name="prenom" placeholder="Prénom" required />
+        <input type="date" name="dateNaissance" required />
+
+        <select name="sexe" required>
+          <option value="">Sexe</option>
+          <option value="Homme">Homme</option>
+          <option value="Femme">Femme</option>
+        </select>
+
+        <select name="etablissement" id="etablissement" required>
+          <option value="">-- Choisissez un établissement --</option>
+          <option value="FST Tanger">FST Tanger</option>
+          <option value="ENSA Tanger">ENSA Tanger</option>
+          <option value="ENSA Al Hoceima">ENSA Al Hoceima</option>
+          <option value="EST Larache">EST Larache</option>
+          <option value="FS Tétouan">FS Tétouan</option>
+          <option value="FLSH Tétouan">FLSH Tétouan</option>
+          <option value="FP Martil">FP Martil</option>
+          <option value="FP Larache">FP Larache</option>
+          <option value="FSJES Tanger">FSJES Tanger</option>
+          <option value="FSJES Tétouan">FSJES Tétouan</option>
+          <option value="ESEF Tétouan">ESEF Tétouan</option>
+          <option value="ESEF Larache">ESEF Larache</option>
+          <option value="ENCG Tanger">ENCG Tanger</option>
+          <option value="ENCG Al Hoceima">ENCG Al Hoceima</option>
+          <option value="Autre">Autre établissement</option>
+        </select>
+
+        <select name="filiere" id="filiere" required>
+          <option value="">-- Choisissez une filière --</option>
+        </select>
+
+        <select name="type" required>
+          <option value="">Type d'utilisateur</option>
+          <option value="etudiant">Étudiant</option>
+          <option value="enseignant">Enseignant</option>
+        </select>
+
+        <button type="submit" class="cta-button">S'inscrire</button>
+        <p class="link">Déjà inscrit ? <a href="connexion.html">Connexion</a></p>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const filieresParEtablissement = {
+      "FST Tanger": [
+        "Génie Informatique", "Génie Électrique", "Génie Mécanique",
+        "Mathématiques Appliquées", "Physique Appliquée", "Chimie Appliquée"
+      ],
+      "ENSA Tanger": [
+        "Génie Informatique", "Génie Télécom et Réseaux", "Génie Électromécanique",
+        "Génie Civil", "Génie Industriel", "Data Science et Intelligence Artificielle"
+      ],
+      "ENSA Al Hoceima": [
+        "Génie de l'Eau et Environnement", "Génie Énergétique", "Génie Informatique"
+      ],
+      "EST Larache": [
+        "Techniques de Management", "Développement Informatique",
+        "Réseaux et Télécoms", "Techniques de Commercialisation"
+      ],
+      "FS Tétouan": [
+        "Biologie", "Chimie", "Mathématiques", "Physique", "Géologie", "Informatique"
+      ],
+      "FLSH Tétouan": [
+        "Études Arabes", "Études Islamiques", "Géographie", "Histoire",
+        "Langue et Littérature Françaises", "Langue Anglaise", "Sociologie"
+      ],
+      "FP Martil": [
+        "Informatique Appliquée", "Langues Étrangères Appliquées", "Économie Appliquée"
+      ],
+      "FP Larache": [
+        "Informatique et Gestion", "Économie Appliquée"
+      ],
+      "FSJES Tanger": [
+        "Droit", "Économie", "Gestion"
+      ],
+      "FSJES Tétouan": [
+        "Droit Public", "Droit Privé", "Économie et Gestion"
+      ],
+      "ESEF Tétouan": [
+        "Sciences de l'Éducation", "Enseignement Primaire"
+      ],
+      "ESEF Larache": [
+        "Enseignement Secondaire", "Langues et Didactique"
+      ],
+      "ENCG Tanger": [
+        "Gestion Financière et Comptable", "Marketing",
+        "Audit et Contrôle de Gestion", "Logistique"
+      ],
+      "ENCG Al Hoceima": [
+        "Marketing et Communication", "Finance", "Commerce International"
+      ],
+      "Autre": [
+        "Autre filière"
+      ]
+    };
+
+    const etablissementSelect = document.getElementById("etablissement");
+    const filiereSelect = document.getElementById("filiere");
+
+    etablissementSelect.addEventListener("change", () => {
+      const etablissementChoisi = etablissementSelect.value;
+      filiereSelect.innerHTML = '<option value="">-- Choisissez une filière --</option>';
+
+      if (filieresParEtablissement[etablissementChoisi]) {
+        filieresParEtablissement[etablissementChoisi].forEach(filiere => {
+          const option = document.createElement("option");
+          option.value = filiere;
+          option.textContent = filiere;
+          filiereSelect.appendChild(option);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
