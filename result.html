@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mes Résultats | TestPilot</title>
+  <link rel="stylesheet" href="result.css" />
+  <script>
+    const role = localStorage.getItem("role");
+    if (role !== "etudiant") {
+      alert("Accès refusé. Réservé aux étudiants.");
+      window.location.href = "index.html";
+    }
+  </script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="logo">TestPilot</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="#" onclick="logout()">Déconnexion</a></li>
+    </ul>
+  </nav>
+
+  <section class="main">
+    <h1>Mes Résultats</h1>
+    <p>Voici les scores obtenus dans vos examens.</p>
+
+    <div class="cards" id="resultContainer"></div>
+  </section>
+
+  <script>
+    function logout() {
+      localStorage.clear();
+      window.location.href = "login.html";
+    }
+
+    const container = document.getElementById("resultContainer");
+    const results = JSON.parse(localStorage.getItem("studentResults")) || [];
+
+    if (results.length === 0) {
+      container.innerHTML = "<p style='text-align:center;'>Aucun résultat disponible pour le moment.</p>";
+    } else {
+      results.forEach((res, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="https://img.icons8.com/color/48/certificate.png" />
+          <h2>${res.exam}</h2>
+          <p>Score obtenu :</p>
+          <a href="#">${res.score} / 100</a><br><br>
+          <button onclick="printResult('${res.exam}', ${res.score})" class="print-btn">🖨 Imprimer</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function printResult(exam, score) {
+      const win = window.open('', '', 'width=600,height=400');
+      win.document.write(`
+        <html>
+        <head>
+          <title>Résultat – ${exam}</title>
+          <style>
+            body {
+              font-family: 'Poppins', sans-serif;
+              text-align: center;
+              padding: 40px;
+              background: #fff;
+              color: #333;
+            }
+            h1 {
+              color: #720070;
+            }
+            .score {
+              margin-top: 20px;
+              font-size: 1.5rem;
+              color: #4d004d;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Résultat d'examen</h1>
+          <p><strong>Examen :</strong> ${exam}</p>
+          <p class="score"><strong>Score :</strong> ${score} / 100</p>
+          <p style="margin-top: 40px;">Date : ${new Date().toLocaleDateString()}</p>
+        </body>
+        </html>
+      `);
+      win.document.close();
+      win.print();
+    }
+  </script>
+</body>
+</html>
