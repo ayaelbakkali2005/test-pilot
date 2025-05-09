@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examens Disponibles | TestPilot</title>
+  <link rel="stylesheet" href="examen-list.css">
+  
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="logo">TestPilot</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="deconnexion.html">Déconnexion</a></li>
+    </ul>
+  </nav>
+
+  <section class="main">
+    <h1>Examens Disponibles</h1>
+    <p>Sélectionnez un examen pour commencer.</p>
+
+    <div class="cards" id="examContainer">
+    
+    </div>
+  </section>
+
+  <script>
+    function logout() {
+      localStorage.clear();
+      window.location.href = "deconnexion.html";
+    }
+
+    const exams = JSON.parse(localStorage.getItem("examList")) || [];
+    const container = document.getElementById("examContainer");
+
+    if (exams.length === 0) {
+      container.innerHTML = "<p style='text-align:center;'>Aucun examen disponible actuellement.</p>";
+    } else {
+      exams.forEach((exam, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="https://img.icons8.com/color/48/test-passed.png" />
+          <h2>${exam.title}</h2>
+          <p>${exam.desc}</p>
+          <p><strong>Durée :</strong> ${exam.duration} min</p>
+          <a href="#" onclick="startExam(${index})">Commencer</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function startExam(index) {
+      localStorage.setItem("selectedExamIndex", index);
+      window.location.href = "exam.html";
+    }
+  </script>
+</body>
+</html>
