@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Créer votre mot de passe</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #1b0033, #3a0066);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    @keyframes glowPulse {
+      0% {
+        box-shadow: 0 0 15px rgba(223, 55, 228, 0.2),
+                    0 0 30px rgba(223, 55, 228, 0.4),
+                    0 0 45px rgba(223, 55, 228, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(223, 55, 228, 0.6),
+                    0 0 50px rgba(223, 55, 228, 0.8),
+                    0 0 70px rgba(223, 55, 228, 1);
+      }
+      100% {
+        box-shadow: 0 0 15px rgba(223, 55, 228, 0.2),
+                    0 0 30px rgba(223, 55, 228, 0.4),
+                    0 0 45px rgba(223, 55, 228, 0.6);
+      }
+    }
+
+    .password-box {
+      background-color: #e9c0df;
+      color: #2d0a52;
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      animation: glowPulse 2s ease-in-out infinite;
+    }
+
+    .password-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+      background: linear-gradient(90deg, #ff4dd2, #b99dd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .password-box input {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: #e87ee179;
+      color: rgb(62, 30, 137);
+      font-size: 1em;
+      outline: none;
+    }
+
+    .criteria {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 15px;
+    }
+
+    .criteria li {
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #830783;
+    }
+
+    .criteria li.valid {
+      color: green;
+    }
+
+    .criteria li::before {
+      content: '✖';
+      color: #be15ad;
+    }
+
+    .criteria li.valid::before {
+      content: '✔';
+      color: green;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #dc15c8, #5a0352);
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    @keyframes shake {
+      0% { transform: translateY(-5px) rotate(0deg); }
+      25% { transform: translateY(-5px) rotate(1.5deg); }
+      50% { transform: translateY(-5px) rotate(-1.5deg); }
+      75% { transform: translateY(-5px) rotate(1.5deg); }
+      100% { transform: translateY(-5px) rotate(0deg); }
+    }
+
+    button:hover:enabled {
+      animation: shake 0.4s ease-in-out infinite;
+      box-shadow: 0 10px 20px rgba(220, 21, 200, 0.3);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="password-box">
+    <h2>Créer Votre Mot de Passe</h2>
+    <input type="password" id="password" placeholder="Mot de passe">
+    <ul class="criteria">
+      <li id="length">8 caractères minimum</li>
+      <li id="number">1 chiffre</li>
+      <li id="uppercase">1 majuscule</li>
+    </ul>
+    <input type="password" id="confirm" placeholder="Confirmer le mot de passe">
+    <button id="submit" disabled>Valider</button>
+  </div>
+
+  <script>
+    const passwordInput = document.getElementById('password');
+    const confirmInput = document.getElementById('confirm');
+    const submitBtn = document.getElementById('submit');
+
+    const lengthItem = document.getElementById('length');
+    const numberItem = document.getElementById('number');
+    const uppercaseItem = document.getElementById('uppercase');
+
+    function validate() {
+      const pwd = passwordInput.value;
+      const confirmPwd = confirmInput.value;
+
+      // Conditions
+      const isLong = pwd.length >= 8;
+      const hasNumber = /\d/.test(pwd);
+      const hasUpper = /[A-Z]/.test(pwd);
+      const match = pwd === confirmPwd;
+
+      // Toggle valid class
+      lengthItem.classList.toggle('valid', isLong);
+      numberItem.classList.toggle('valid', hasNumber);
+      uppercaseItem.classList.toggle('valid', hasUpper);
+
+      // Enable submit if all conditions true
+      const allValid = isLong && hasNumber && hasUpper && match;
+      submitBtn.disabled = !allValid;
+    }
+
+    passwordInput.addEventListener('input', validate);
+    confirmInput.addEventListener('input', validate);
+  </script>
+</body>
+</html>
