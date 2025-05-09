@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajouter une Question</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+        margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #2c003e, #4b005c, #280d51, #270a67);
+      background-size: 400% 400%;
+      animation: gradientFlow 20s ease infinite;
+      color: white;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #ffccf9;
+      text-decoration: none;
+    }
+
+    .main {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .main h1 {
+      font-size: 2.3rem;
+      color: #ffbdf4;
+      margin-bottom: 30px;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 200, 255, 0.3);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-size: 1em;
+    }
+
+    .option-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 24px;
+      font-size: 1em;
+      background-color: #720070;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #4b004c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="#" class="logo">Test-Pilot</a>
+  </div>
+
+  <div class="main">
+    <h1>Ajouter une Question</h1>
+
+    <div class="form-container">
+      <form id="question-form">
+        <label for="type">Type de question:</label>
+        <select id="type" name="type" onchange="afficherType()">
+          <option value="directe">Question Directe</option>
+          <option value="qcm">QCM</option>
+        </select>
+
+        <label for="enonce">Énoncé de la question:</label>
+        <textarea id="enonce" name="enonce" rows="3" required></textarea>
+
+        <label for="media">Fichier (image, audio, vidéo):</label>
+        <input type="file" id="media" name="media">
+
+        <div id="zone-directe">
+          <label for="reponse">Réponse correcte:</label>
+          <input type="text" id="reponse" name="reponse">
+
+          <label for="tolerance">Taux de tolérance (%):</label>
+          <input type="number" id="tolerance" name="tolerance" value="10" min="0" max="100">
+        </div>
+
+        <div id="zone-qcm" style="display: none;">
+          <label>Options:</label>
+          <div class="option-inputs">
+            <input type="text" placeholder="Option 1">
+            <input type="text" placeholder="Option 2">
+            <input type="text" placeholder="Option 3">
+            <input type="text" placeholder="Option 4">
+          </div>
+          <label>Choisissez les bonnes réponses (cases à cocher):</label>
+          <div class="option-inputs">
+            <label><input type="checkbox"> Option 1</label>
+            <label><input type="checkbox"> Option 2</label>
+            <label><input type="checkbox"> Option 3</label>
+            <label><input type="checkbox"> Option 4</label>
+          </div>
+        </div>
+
+        <label for="note">Note:</label>
+        <input type="number" id="note" name="note" required>
+
+        <label for="duree">Durée (en secondes):</label>
+        <input type="number" id="duree" name="duree" required>
+
+        <button type="submit">Ajouter la question</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function afficherType() {
+      const type = document.getElementById("type").value;
+      document.getElementById("zone-directe").style.display = type === "directe" ? "block" : "none";
+      document.getElementById("zone-qcm").style.display = type === "qcm" ? "block" : "none";
+    }
+  </script>
+</body>
+</html>
