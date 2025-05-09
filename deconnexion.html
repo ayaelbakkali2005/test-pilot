@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Déconnexion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #2c003e, #4b005c, #320a67, #2e0c65);
+      background-size: 400% 400%;
+      animation: gradientFlow 20s ease infinite;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #ffd7fa;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ffccf9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Déconnexion en cours...</h1>
+  <p>Merci de votre visite. À bientôt !</p>
+
+  <script>
+    // Suppression du token/session (exemple avec localStorage)
+    localStorage.removeItem("authToken");
+
+    // Redirection après 3 secondes
+    setTimeout(() => {
+      window.location.href = "index.html"; 
+    }, 3000);
+  </script>
+
+</body>
+</html>
