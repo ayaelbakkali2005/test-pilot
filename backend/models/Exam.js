@@ -14,7 +14,11 @@ const examSchema = new mongoose.Schema({
   duration: {
     type: Number, // durée en minutes
     required: true
-  }
+  },
+  questions: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Question'
+  }]
 });
 
 module.exports = mongoose.model("Exam", examSchema);
