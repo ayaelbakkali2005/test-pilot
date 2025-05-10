@@ -9,10 +9,17 @@ const questionSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  type: {
+    type: String,
+    enum: ['QCM', 'direct'],
+    required: true
+  },
+  options: [String],
   correctAnswer: {
     type: String,
     required: true
   },
+   correctAnswers: [String],
   tolerance: {
     type: Number,
     default: 0

@@ -17,7 +17,7 @@ const examSchema = new mongoose.Schema({
   },
   questions: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Question'
+    ref: 'Question' //  Utilisé pour chaîner les questions via populate
   }]
 });
 

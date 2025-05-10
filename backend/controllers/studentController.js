@@ -1,4 +1,4 @@
-// Importation des modèles nécessaires
+
 const Exam = require('../models/Exam');
 const Question = require('../models/Question');
 
@@ -9,7 +9,10 @@ exports.getExamQuestions = async (req, res) => {
         const examId = req.params.examId;
 
         // Recherche de l'examen dans la base de données avec le populate pour récupérer les questions associées
-        const exam = await Exam.findById(examId).populate('questions');
+        const exam = await Exam.findById(examId).populate({
+  path: 'questions',
+  strictPopulate: false
+});
         if (!exam) {
             // Si l'examen n'est pas trouvé dans la base de données
             return res.status(404).json({ message: 'Examen non trouvé' });

@@ -14,6 +14,7 @@ app.use(express.json());
 app.use('/api/exams', examRoutes);
 app.use('/api/questions', questionRoutes);
 app.use('/api/geoloc', geolocRoutes); 
+// Routes des étudiants (soumission et affichage des questions avec timer)
 app.use('/api/student', studentRoutes); // ✅ Route des étudiants ajoutée
 app.get('/', (req, res) => {
   res.json({ message: "API Opérationnelle" });
