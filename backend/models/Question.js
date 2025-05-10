@@ -16,7 +16,16 @@ const questionSchema = new mongoose.Schema({
   tolerance: {
     type: Number,
     default: 0
+ },
+  // ✅ durée en secondes
+  duration: {
+    type: Number,
+    required: true
+  },
+  // ✅ note pour cette question
+  note: {
+    type: Number,
+    required: true
   }
 });
-//
 module.exports = mongoose.model('Question', questionSchema);
