@@ -10,7 +10,6 @@ exports.createQuestion = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
 // Récupérer toutes les questions
 exports.getAllQuestions = async (req, res) => {
   try {
