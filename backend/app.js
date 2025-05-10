@@ -17,10 +17,5 @@ app.use('/api/geoloc', geolocRoutes);
 app.get('/', (req, res) => {
   res.json({ message: "API Opérationnelle" });
 });
-
-// ✅ Route pour la géolocalisation
-const geolocRoutes = require('./routes/geoloc');
-app.use('/api/geoloc', geolocRoutes);
-
 // Export pour server.js
 module.exports = app;
