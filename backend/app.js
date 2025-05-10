@@ -2,8 +2,6 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-
-
 //hhh
 // Middlewares
 
@@ -18,13 +16,8 @@ app.use('/api/exams', examRoutes);
 app.get('/', (req, res) => {
   res.json({ message: "API Opérationnelle" });
 });
-
-
 // ✅ Route pour la géolocalisation
 const geolocRoutes = require('./routes/geoloc');
 app.use('/api/geoloc', geolocRoutes);
-
-
-
 // Export pour server.js
 module.exports = app;
