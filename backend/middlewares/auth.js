@@ -7,11 +7,12 @@ const verifyToken = (req, res, next) => {
 
   const token = authHeader.split(' ')[1];
   try {
-    const decoded = jwt.verify(token, 'SECRET_KEY');
-    req.profId = decoded.id;
+    const decoded = jwt.verify(token, process.env.SECRET_KEY || 'SECRET_KEY');
+    req.userId = decoded.id;
+    req.typeUtilisateur = decoded.typeUtilisateur;
     next();
   } catch (err) {
-    return res.status(403).json({ message: 'Token invalide' });
+    return res.status(403).json({ message: 'Token invalide  ou expiré' });
   }
 };
 
