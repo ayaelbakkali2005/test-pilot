@@ -1,12 +1,10 @@
-// backend/routes/examRoutes.js
 const express = require('express');
 const router = express.Router();
 const examController = require('../controllers/examController');
-//h
-// Route pour créer un examen
-router.post('/', examController.createExam);
+const verifyToken = require('../middlewares/auth');
 
-// Route pour récupérer tous les examens
-router.get('/', examController.getAllExams);
+// ✅ Routes protégées
+router.post('/', verifyToken, examController.createExam);
+router.get('/', verifyToken, examController.getAllExams);
 
 module.exports = router;

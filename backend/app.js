@@ -19,5 +19,9 @@ app.use('/api/student', studentRoutes); // ✅ Route des étudiants ajoutée
 app.get('/', (req, res) => {
   res.json({ message: "API Opérationnelle" });
 });
+const authRoutes = require('./routes/authRoutes');
+app.use('/api/auth', authRoutes);
+const profRoutes = require('./routes/profRoutes');
+app.use('/api/profs', profRoutes);
 // Export pour server.js
 module.exports = app;
